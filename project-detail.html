@@ -1,0 +1,86 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details - Kliment Ho</title> <!-- Title will be updated by JS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="logo">Kliment Ho</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/#hero">Home</a></li>
+                    <li><a href="/#projects">Projects</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="project-detail-section">
+            <div class="container">
+                <div class="project-detail-header">
+                    <h1>Project Title Loading...</h1>
+                    <p class="tech-stack-display">Technologies: loading...</p>
+                </div>
+
+                <div class="project-detail-content">
+                    <div class="project-media">
+                        <div class="main-project-image">
+                            <img src="assets/images/placeholder_large.jpg" alt="Project Main Image Placeholder">
+                        </div>
+                        <div class="project-image-gallery">
+                            <!-- Gallery images will be loaded here by JS -->
+                        </div>
+                    </div>
+
+                    <aside class="project-description-panel">
+                        <h2>About This Project</h2>
+                        <div class="description-content">
+                            <p>Loading project description...</p>
+                        </div>
+                        <div class="project-links-box">
+                            <!-- Links (GitHub, Live Demo) will be loaded here by JS -->
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Simple Image Modal Structure (can be placed at the end of body) -->
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <span class="close-modal" onclick="closeImageModal()">&times;</span>
+        <img class="modal-content" id="modalImage" alt="Expanded Image">
+    </div>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="current-year">2024</span> Kliment Ho. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/DevKlim" target="_blank" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/klh005" target="_blank" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/projects.js"></script> <!-- Load projects data first -->
+    <script src="js/script.js"></script>
+    <!-- The title update logic specific to project-detail.html is now inside script.js -->
+</body>
+
+</html>

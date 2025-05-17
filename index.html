@@ -1,0 +1,107 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kliment Ho - Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="logo">Kliment Ho</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#featured-curated-projects">Projects</a></li> <!-- Updated href -->
+                    <li><a href="resume.html">Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <video autoplay muted loop playsinline id="hero-video-bg">
+                <source src="assets/videos/hero-background-steam.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-content container">
+                <h1>Kliment Ho</h1>
+                <p class="hero-subheading">AI Engineer & Data Scientist | Crafting Intelligent Solutions & Innovative
+                    Experiences.</p>
+                <a href="#page-content-start" class="cta-button">View My Work</a>
+            </div>
+        </section>
+
+        <!-- New Featured Curated Projects Banner Section -->
+        <section id="featured-curated-projects" class="featured-curated-banner-section">
+            <div class="container">
+                <h2>Featured Showcase</h2> <!-- Optional Title for the section -->
+            </div>
+            <div class="featured-curated-rotator">
+                <div class="slides-container" id="featured-curated-slides-container">
+                    <!-- Slides will be injected here by JS -->
+                </div>
+                <div class="rotator-dots" id="featured-curated-dots-container">
+                    <!-- Dots will be injected here by JS -->
+                </div>
+            </div>
+        </section>
+
+
+        <div id="page-content-start" class="container page-layout-container">
+            <div class="main-content-area">
+                <!-- The old "Featured Projects" grid section is removed from here -->
+                <!-- It is replaced by the banner above -->
+
+                <section id="all-github-projects" class="projects-section">
+                    <h2>My GitHub Repositories</h2>
+                    <div class="projects-grid" id="github-projects-grid">
+                        <p class="loading-message">Loading GitHub repositories...</p>
+                        <!-- GitHub repo cards will be dynamically inserted here by script.js -->
+                    </div>
+                </section>
+            </div>
+
+            <aside class="sidebar-area">
+                <div class="featured-rotator-panel">
+                    <h2>Recent GitHub Activity</h2>
+                    <div class="rotator-content" id="rotator-content-area">
+                        <p class="loading-message">Loading recent projects...</p>
+                        <!-- Rotator items will be injected here for GitHub repos -->
+                    </div>
+                    <div class="rotator-nav">
+                        <button id="rotator-prev" aria-label="Previous GitHub Project">&lt;</button>
+                        <button id="rotator-next" aria-label="Next GitHub Project">&gt;</button>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="current-year">2024</span> Kliment Ho. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/DevKlim" target="_blank" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/klh005" target="_blank" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/projects.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
