@@ -1,16 +1,9 @@
+// README.md
 # Kliment Ho - Portfolio Website (khfolio)
 
 This repository contains the source code for Kliment Ho's personal portfolio website.
 
-The website is designed with a modern, sleek aesthetic, showcasing projects, professional experience, and skills. It dynamically fetches and displays GitHub repositories from multiple specified accounts and features a prominent rotating banner for curated projects.
-
-## Current Goal (Phase 2 - Modernization & GitHub Integration)
-
-1.  **Update Site Aesthetic**: Transition to a sleek, modern dark theme.
-2.  **Featured Curated Projects Banner**: Transform the curated projects display into a large, full-width rotating banner panel on the homepage, automatically cycling every 3 seconds.
-3.  **Featured GitHub Projects Panel (Sidebar)**: Implement a smaller rotating panel in the sidebar showcasing the most recent Git projects from all configured accounts.
-4.  **Decorate and Modernize**: Enhance the site with modern effects, colors, and typography.
-5.  **Integrate All GitHub Repositories**: Dynamically fetch and display all public GitHub repositories from **multiple specified user accounts** in a grid format.
+The website is designed with a modern, sleek aesthetic, showcasing projects, professional experience, and skills. It dynamically fetches and displays GitHub repositories and features a prominent rotating banner for curated projects. A key personal touch is the 3D "Memories & Moments" photo gallery.
 
 ## Progress
 
@@ -18,36 +11,70 @@ The website is designed with a modern, sleek aesthetic, showcasing projects, pro
 -   **Status**: Completed.
 -   **Details**: Initial setup with dynamic project display from `projects.js`, resume page, project detail page, and Steam-like styling.
 
-### Iteration 2: Modern Aesthetic, GitHub Integration, New Featured Rotators
--   **Objective**: Implement a new sleek design, a large rotating banner for curated projects, a sidebar rotator for recent GitHub activity, and a grid for all GitHub repos (from multiple accounts).
--   **Status**: In Progress
+### Iteration 2: Modern Aesthetic & New Features
+-   **Objective**: Implement a new sleek design, a large rotating banner for curated projects, a sidebar rotator for recent GitHub activity, a grid for all GitHub repos, and an automated 3D photo gallery.
+-   **Status**: Completed.
 
-### Key Tasks for Iteration 2:
--   [X] Define a new modern dark color palette (GitHub-inspired) in `css/style.css`.
--   [X] Update global CSS styles to use the new palette.
--   [X] Add HTML structure for the "Recent GitHub Activity" rotating panel in the sidebar in `index.html`.
--   [X] Add HTML structure for the "All GitHub Repositories" section in `index.html`.
--   [X] Implement CSS for the sidebar rotator and the overall sleek design, including effects.
--   [X] Add HTML structure for the large "Featured Curated Projects" rotating banner in `index.html`.
--   [X] Implement CSS for this new large banner rotator, including slide styling, text overlays, and navigation dots.
--   [X] Add JavaScript logic in `js/script.js` to:
-    -   [X] Populate the "Featured Curated Projects" banner using `projects.js` data.
-    -   [X] Implement automatic rotation (every 3 seconds) and navigation (dots) for this banner.
-    -   [ ] **UPDATE**: Fetch all public repositories from **multiple specified GitHub user accounts** (e.g., "DevKlim", "klh005").
-    -   [ ] **UPDATE**: Combine, de-duplicate, and sort fetched repositories.
-    -   [X] Populate the "All GitHub Repositories" section with the combined list.
-    -   [X] Select recent repositories from the combined list to populate the "Recent GitHub Activity" rotating panel in the sidebar.
-    -   [X] Implement the rotation/slideshow functionality for the sidebar panel.
--   [ ] Ensure responsiveness of new elements.
--   [X] Update `README.md` (this file) with new goals and progress.
+### Iteration 3: Enhanced Polaroid Photo Gallery
+-   **Objective**: Refine the photo gallery into a polaroid style with a glossy laminated finish. The cards are now fully responsive to each photo's dimensions, draggable with momentum, and feature a more compact grid layout.
+-   **Status**: Completed.
 
-### Next Steps / To-Do (Post-Iteration 2 Implementation):
--   **Asset Population**:
-    -   Ensure all project images (curated `mainImageUrl` for the banner, thumbnails for GitHub repos if a convention is adopted) are high quality and correctly sized.
-    -   Verify the hero video (`assets/videos/hero-background-steam.mp4`) still fits the new aesthetic or replace it.
--   **Content Review**: Ensure all text content is accurate and well-presented with the new design.
--   **Thorough Testing**: Test across various devices and browsers. Fix any responsiveness or display issues.
--   **Advanced Effects**: Consider adding more subtle animations or micro-interactions.
+## Key Features & Usage
+
+### Memories & Moments Photo Gallery
+
+A new section has been added to display personal photos in an interactive 3D gallery. Each photo is presented on a laminated polaroid-style card that can be flipped over to reveal details. The cards feature advanced physics-based interactions.
+
+**Features:**
+-   **Perfect Polaroid Ratios:** Cards automatically resize to create a perfect polaroid frame around each photo, regardless of its original dimensions, with zero cropping.
+-   **Click & Drag to Spin:** Grab a card and "throw" it to make it spin with realistic momentum.
+-   **Click to Flip:** A simple, quick click will flip the card over to see the details on the back.
+-   **Subtle Hover & Lamination:** When idle, cards have a gentle 3D hover effect. A glossy sheen is applied to each card face to simulate a laminated finish.
+
+#### How to Update Your Photos
+
+**Requirement:** You must have **Node.js** installed.
+
+**Step 1: Install Dependencies**
+-   If this is your first time running the script, open your terminal in the project's root directory and run:
+    ```bash
+    npm install image-size
+    ```
+
+**Step 2: Add Your Image Files**
+-   Place your `.jpg` or `.png` images directly inside the `data/pictures/` folder.
+
+**Step 3: Generate the Picture List**
+-   This is the **only command you need to run** after changing your images.
+-   In your terminal, run:
+    ```bash
+    node utils/generate_picture_list.js
+    ```
+-   This script automatically finds all images in `data/pictures/`, reads their dimensions, sorts them by date, and generates a `data/picture-manifest.json` file.
+
+**Step 4: Add Descriptions (Optional)**
+-   To add a personal story, date, or location to a photo, open the `data/memories.json` file. If it doesn't exist, you can create it.
+-   Add a new entry where the **key is the exact filename** of the picture.
+
+-   **Example `data/memories.json` structure:**
+    ```json
+    {
+      "tokyo_trip_2021.jpg": {
+        "description": "Exploring the vibrant streets of Shibuya Crossing. The energy was electric!",
+        "date": "October 2021",
+        "location": "Tokyo, Japan"
+      },
+      "iceland_aurora_2023.jpeg": {
+        "description": "Witnessing the magic of the Northern Lights. No photo can do it justice.",
+        "date": "February 2023",
+        "location": "Vik, Iceland"
+      }
+    }
+    ```
+-   If you don't add an entry for a picture, it will still appear in the gallery with default placeholder text on the back.
+
+**Step 5: View Your Changes**
+-   Save any changes and refresh `index.html` in the browser to see the updated gallery.
 
 ---
 *This README will be updated as development progresses.*
