@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap"
       rel="stylesheet"
     />
     <link
@@ -19,13 +19,13 @@
   <body>
     <header class="site-header">
       <div class="container">
-        <a href="/" class="logo">Kliment Ho</a>
+        <a href="index.html" class="logo">Kliment Ho</a>
         <nav class="main-nav">
           <ul>
             <li><a href="#hero" class="active">Home</a></li>
-            <li><a href="#featured-curated-projects">Projects</a></li>
-            <li><a href="#memories">Memories</a></li>
-            <li><a href="resume.html">Resume</a></li>
+            <li><a href="#featured-curated-projects">Collection</a></li>
+            <li><a href="#memories">Moments</a></li>
+            <li><a href="resume.html">Atelier</a></li>
           </ul>
         </nav>
       </div>
@@ -33,13 +33,6 @@
 
     <main>
       <section id="hero" class="hero-section">
-        <video autoplay muted loop playsinline id="hero-video-bg">
-          <source
-            src="assets/videos/hero-background-steam.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
         <div class="hero-overlay"></div>
         <div class="hero-content container">
           <h1>Kliment Ho</h1>
@@ -47,7 +40,39 @@
             AI Engineer & Data Scientist | Crafting Intelligent Solutions &
             Innovative Experiences.
           </p>
-          <a href="#page-content-start" class="cta-button">View My Work</a>
+          <a href="#page-content-start" class="cta-button">Explore The Work</a>
+        </div>
+      </section>
+
+      <!-- About Me Section -->
+      <section id="about" class="about-me-section">
+        <div class="container">
+          <div class="about-me-content">
+            <div class="about-me-image">
+              <img
+                src="data/pictures/IMG_1238.jpg"
+                alt="A photo of Kliment Ho"
+              />
+            </div>
+            <div class="about-me-text">
+              <h2>Kliment is an odd name...</h2>
+              <p>Yeah, and honestly, it is a great fit for someone like me!</p>
+              <p>
+                If you are not a web-scraping agent, then welcome to my cozy
+                little abode! I love exploring every single dessert shop in Asia
+                and traveling public transportation across the globe! Of course,
+                I also love playing and modding video games time to time...
+              </p>
+              <p>
+                Multi-agentic systems, AI pipelines, and graphics programming
+                are three of my favorite research developments! I believe that
+                AGI will shift the operations of all factories, from small candy
+                shops to multi-million dollar chip production industries. You
+                can find me probably constantly trying new food or playing
+                around with my local LLMs using Qwen and HuggingFace models.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -57,7 +82,7 @@
         class="featured-curated-banner-section"
       >
         <div class="container">
-          <h2>Featured Showcase</h2>
+          <h2>Featured Collection</h2>
           <!-- Optional Title for the section -->
         </div>
         <div class="featured-curated-rotator">
@@ -76,7 +101,7 @@
           <!-- It is replaced by the banner above -->
 
           <section id="all-github-projects" class="projects-section">
-            <h2>My GitHub Repositories</h2>
+            <h2>The Archive</h2>
             <div class="projects-grid" id="github-projects-grid">
               <p class="loading-message">Loading GitHub repositories...</p>
               <!-- GitHub repo cards will be dynamically inserted here by script.js -->
@@ -86,7 +111,7 @@
 
         <aside class="sidebar-area">
           <div class="featured-rotator-panel">
-            <h2>Recent GitHub Activity</h2>
+            <h2>Recent Activity</h2>
             <div class="rotator-content" id="rotator-content-area">
               <p class="loading-message">Loading recent projects...</p>
               <!-- Rotator items will be injected here for GitHub repos -->

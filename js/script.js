@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .getElementById("hero-video-bg")
       .querySelector("source");
     if (videoSource) videoSource.src = klimentInfo.heroVideo;
-    document.getElementById("hero-video-bg").load();
+    // document.getElementById("hero-video-bg").load(); // This can cause issues in some browsers if video is removed from DOM
   }
 
   const footerYear = document.getElementById("current-year");
@@ -84,32 +84,24 @@ document.addEventListener("DOMContentLoaded", function () {
   navLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
-      let targetId = this.getAttribute("href");
-      const targetIdClean = targetId.startsWith("/#")
-        ? targetId.substring(1)
-        : targetId;
+      let targetId = this.getAttribute("href"); // e.g., '#hero'
 
-      if (
-        window.location.pathname !== "/" &&
-        window.location.pathname !== "/index.html" &&
-        targetIdClean.startsWith("#")
-      ) {
-        window.location.href = "/" + targetIdClean;
-      } else {
-        let targetElement = document.querySelector(targetIdClean);
-        if (targetElement) {
-          // Adjust for fixed header height
-          const headerOffset =
-            document.querySelector(".site-header").offsetHeight;
-          const elementPosition = targetElement.getBoundingClientRect().top;
-          const offsetPosition =
-            elementPosition + window.pageYOffset - headerOffset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth",
-          });
+      let targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        let headerOffset = 0;
+        const header = document.querySelector(".site-header");
+        if (getComputedStyle(header).position === "fixed") {
+          headerOffset = header.offsetHeight;
         }
+
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition =
+          elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
       }
     });
   });
@@ -119,7 +111,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function changeNav() {
     let currentSectionId = "";
-    const headerHeight = document.querySelector(".site-header").offsetHeight;
+    let headerHeight = 0;
+    const header = document.querySelector(".site-header");
+    if (header && getComputedStyle(header).position === "fixed") {
+      headerHeight = header.offsetHeight;
+    }
+
+    const path = window.location.pathname;
+    const isIndexPage =
+      path.endsWith("/") ||
+      path.endsWith("/index.html") ||
+      path.endsWith(".html") === false;
 
     sections.forEach((section) => {
       const sectionTop = section.offsetTop - headerHeight - 5; // 5px buffer
@@ -129,14 +131,13 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // If near the top, default to hero
+    // If near the top on the index page, default to hero
     if (
       window.scrollY <
         (sections.length > 0
           ? sections[0].offsetTop - headerHeight - 50
           : window.innerHeight / 2) &&
-      (window.location.pathname === "/" ||
-        window.location.pathname === "/index.html")
+      isIndexPage
     ) {
       currentSectionId = "hero";
     }
@@ -148,12 +149,18 @@ document.addEventListener("DOMContentLoaded", function () {
         ? linkHref.substring(linkHref.lastIndexOf("#") + 1)
         : null;
 
-      if (sectionIdFromLink === currentSectionId) {
+      if (sectionIdFromLink && sectionIdFromLink === currentSectionId) {
         link.classList.add("active");
       }
-      // Special handling for "Projects" link to highlight for #featured-curated-projects OR #all-github-projects
+
+      // Special handling for "Projects/Collection" link to highlight for multiple sections
+      const projectNavLinkKeywords = ["project", "collection"];
+      const isProjectNavLink = projectNavLinkKeywords.some((keyword) =>
+        link.textContent.toLowerCase().includes(keyword)
+      );
+
       if (
-        sectionIdFromLink === "featured-curated-projects" &&
+        isProjectNavLink &&
         (currentSectionId === "featured-curated-projects" ||
           currentSectionId === "all-github-projects" ||
           currentSectionId === "page-content-start")
@@ -163,20 +170,35 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Ensure correct active link for non-scrolling pages
-    if (window.location.pathname.includes("resume.html")) {
-      document
-        .querySelector('.main-nav ul li a[href="resume.html"]')
-        ?.classList.add("active");
-    } else if (window.location.pathname.includes("project-detail.html")) {
-      // For project detail, we might want "Projects" to be active
-      document
-        .querySelector('.main-nav ul li a[href="#featured-curated-projects"]')
-        ?.classList.add("active");
-    } else if (
-      (window.location.pathname === "/" ||
-        window.location.pathname === "/index.html") &&
-      !currentSectionId
-    ) {
+    const resumeNavLinkKeywords = ["resume", "atelier"];
+    const isResumePage = resumeNavLinkKeywords.some((keyword) =>
+      path.includes(keyword)
+    );
+
+    if (isResumePage) {
+      mainNavLinks.forEach((link) => {
+        const isResumeLink = resumeNavLinkKeywords.some((keyword) =>
+          link.href.toLowerCase().includes(keyword)
+        );
+        if (isResumeLink) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    } else if (path.includes("project-detail.html")) {
+      mainNavLinks.forEach((link) => {
+        const projectNavLinkKeywords = ["project", "collection"];
+        const isProjectNavLink = projectNavLinkKeywords.some((keyword) =>
+          link.textContent.toLowerCase().includes(keyword)
+        );
+        if (isProjectNavLink) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    } else if (isIndexPage && !currentSectionId) {
       // Default to home if on index and no specific section is active yet (e.g. very top of page)
       document
         .querySelector('.main-nav ul li a[href="#hero"]')
@@ -231,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="featured-slide-content">
                     <h3>${project.title}</h3>
                     <p>${project.shortDescription}</p>
-                    <a href="project-detail.html?id=${project.id}" class="cta-button">View Details</a>
+                    <a href="project-detail.html?id=${project.id}" class="cta-button">View Piece</a>
                 </div>
             `;
       featuredCuratedSlidesContainer.appendChild(slide);
@@ -272,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function startFeaturedRotatorInterval() {
     if (featuredSlides.length > 1) {
       clearInterval(featuredRotatorInterval);
-      featuredRotatorInterval = setInterval(nextFeaturedSlide, 3000);
+      featuredRotatorInterval = setInterval(nextFeaturedSlide, 4000); // Slower, more elegant timing
     }
   }
   function resetFeaturedRotatorInterval() {
@@ -383,31 +405,21 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="project-card">
                         <div class="project-thumbnail placeholder">
                             <span>${repo.name
-                              .substring(0, 1)
+                              .substring(0, 2)
                               .toUpperCase()}</span> 
                         </div>
                         <div class="project-info">
-                            <h3>${repo.name}</h3>
-                            <p>${
-                              repo.description || "No description available."
-                            }</p>
                             <div class="project-tags">
                                 ${
                                   repo.language
                                     ? `<span>${repo.language}</span>`
                                     : ""
                                 }
-                                ${repo.topics
-                                  .slice(0, 2)
-                                  .map(
-                                    (topic) =>
-                                      `<span>${
-                                        topic.charAt(0).toUpperCase() +
-                                        topic.slice(1)
-                                      }</span>`
-                                  )
-                                  .join("")}
                             </div>
+                            <h3>${repo.name}</h3>
+                            <p>${
+                              repo.description || "No description available."
+                            }</p>
                             <div class="repo-stats">
                                 <span><i class="fas fa-star"></i> ${
                                   repo.stargazers_count
@@ -415,11 +427,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <span><i class="fas fa-code-branch"></i> ${
                                   repo.forks_count
                                 }</span>
-                                ${
-                                  repo.watchers_count > 0
-                                    ? `<span><i class="fas fa-eye"></i> ${repo.watchers_count}</span>`
-                                    : ""
-                                }
                             </div>
                         </div>
                     </div>
@@ -463,13 +470,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     <h3>${repo.name}</h3>
                     <p>${(repo.description || "No description.").substring(
                       0,
-                      80
+                      100 // More text for luxury feel
                     )}${
-        repo.description && repo.description.length > 80 ? "..." : ""
+        repo.description && repo.description.length > 100 ? "..." : ""
       }</p>
                     <a href="${
                       repo.html_url
-                    }" target="_blank" class="rotator-item-link">View on GitHub &rarr;</a>
+                    }" target="_blank" class="rotator-item-link">View on GitHub</a>
                 </div>
             `;
       rotatorContentArea.innerHTML += rotatorItemHTML;
@@ -553,7 +560,7 @@ document.addEventListener("DOMContentLoaded", function () {
       updateTextContent(".project-detail-header h1", project.title);
       updateTextContent(
         ".project-detail-header .tech-stack-display",
-        `Technologies: ${project.techStack.join(", ")}`
+        `Built With: ${project.techStack.join(" / ")}`
       );
 
       const mainMediaContainer = projectDetailSection.querySelector(
@@ -603,7 +610,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     } else {
-      projectDetailSection.innerHTML = `<div class="container"><p class="error-message">Project not found. Please return to the <a href="/#featured-curated-projects">projects page</a>.</p></div>`;
+      projectDetailSection.innerHTML = `<div class="container"><p class="error-message">Project not found. Please return to the <a href="index.html#featured-curated-projects">collection page</a>.</p></div>`;
     }
   }
 
@@ -734,6 +741,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const momentumLoop = () => {
       if (isDragging) return;
+      // *** FIX: Inverted vertical rotation to feel natural ***
       rotationX -= velocityY * rotationFactor;
       rotationY += velocityX * rotationFactor;
       velocityX *= friction;
@@ -768,6 +776,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const deltaX = e.clientX - currentX;
       const deltaY = e.clientY - currentY;
       rotationY += deltaX * rotationFactor;
+      // *** FIX: Inverted vertical rotation to feel natural ***
+      // Dragging down (positive deltaY) should decrease rotationX to tilt the card back.
       rotationX -= deltaY * rotationFactor;
       applyTransform();
       velocityX = deltaX;
