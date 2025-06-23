@@ -1272,6 +1272,51 @@ body {
   color: var(--text-primary);
 }
 
+/* --- Floating Polaroid Styles --- */
+#floating-polaroid {
+  position: fixed;
+  z-index: 900;
+  width: 150px;
+  height: auto;
+  pointer-events: none; /* Allows clicks to pass through */
+  perspective: 800px;
+  /* Initial position set by JS */
+}
+
+#floating-polaroid .polaroid-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: subtle-spin 25s linear infinite;
+}
+
+#floating-polaroid .polaroid-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background-color: var(--secondary-bg);
+  padding: 10px 10px 40px 10px; /* Classic polaroid proportions */
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+#floating-polaroid .polaroid-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes subtle-spin {
+  from {
+    transform: rotateY(0deg) rotateX(10deg);
+  }
+  to {
+    transform: rotateY(360deg) rotateX(10deg);
+  }
+}
+
 /* Responsive Adjustments */
 @media (max-width: 1024px) {
   html {
@@ -1400,6 +1445,11 @@ body {
   }
   .project-detail-header h1 {
     font-size: 2.8rem;
+  }
+
+  /* Hide floating card on mobile */
+  #floating-polaroid {
+    display: none;
   }
 }
 

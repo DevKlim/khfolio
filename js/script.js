@@ -77,6 +77,40 @@ document.addEventListener("DOMContentLoaded", function () {
       resumeFooterYear.textContent = new Date().getFullYear();
   }
 
+  // --- VVIP ROOM SECRET ENTRANCE ---
+  const logoLink = document.querySelector("header .logo");
+  if (logoLink) {
+    let clickCount = 0;
+    let clickTimer;
+    const requiredClicks = 7;
+    const timeLimit = 500; // ms between clicks
+
+    logoLink.addEventListener("click", (event) => {
+      event.preventDefault(); // Always prevent default to count clicks
+
+      clickCount++;
+
+      // Clear previous timer
+      clearTimeout(clickTimer);
+
+      if (clickCount === requiredClicks) {
+        // Reached the target, go to VVIP room
+        window.location.href = "vvip-login.html";
+        clickCount = 0; // Reset for good measure
+      } else {
+        // Set a timer. If it expires, it means the user stopped clicking.
+        clickTimer = setTimeout(() => {
+          // If the timer runs out and we haven't reached the count,
+          // perform the original action of the link (navigate to home).
+          if (clickCount < requiredClicks) {
+            window.location.href = logoLink.href;
+          }
+          // The counter will reset on page load anyway.
+        }, timeLimit);
+      }
+    });
+  }
+
   // --- NAVIGATION ---
   const navLinks = document.querySelectorAll(
     '.main-nav a[href^="#"], .cta-button[href^="#"]'
@@ -209,6 +243,37 @@ document.addEventListener("DOMContentLoaded", function () {
   if (document.querySelector("body")) {
     changeNav();
     window.addEventListener("scroll", changeNav);
+  }
+
+  // --- FLOATING POLAROID SCROLL ANIMATION ---
+  const floatingCard = document.getElementById("floating-polaroid");
+
+  function handleFloatingCardScroll() {
+    if (!floatingCard) return;
+
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+    const maxScroll = scrollHeight - clientHeight;
+    const scrollFraction = maxScroll > 0 ? scrollTop / maxScroll : 0;
+
+    // Linear interpolation function
+    const lerp = (a, b, t) => a + (b - a) * t;
+
+    // Define path for the card
+    const top = lerp(20, 75, scrollFraction); // From 20vh to 75vh
+    const left = lerp(85, 10, scrollFraction); // From 85vw to 10vw (right to left)
+    const rotation = lerp(15, -25, scrollFraction); // From 15deg to -25deg
+
+    floatingCard.style.top = `${top}vh`;
+    floatingCard.style.left = `${left}vw`;
+    floatingCard.style.transform = `rotateZ(${rotation}deg)`;
+  }
+
+  // Only run this animation on the index page
+  if (floatingCard) {
+    handleFloatingCardScroll(); // Set initial position
+    window.addEventListener("scroll", handleFloatingCardScroll);
   }
 
   // --- FEATURED CURATED PROJECTS BANNER ROTATOR ---
@@ -741,7 +806,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const momentumLoop = () => {
       if (isDragging) return;
-      // *** FIX: Inverted vertical rotation to feel natural ***
       rotationX -= velocityY * rotationFactor;
       rotationY += velocityX * rotationFactor;
       velocityX *= friction;
@@ -776,8 +840,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const deltaX = e.clientX - currentX;
       const deltaY = e.clientY - currentY;
       rotationY += deltaX * rotationFactor;
-      // *** FIX: Inverted vertical rotation to feel natural ***
-      // Dragging down (positive deltaY) should decrease rotationX to tilt the card back.
       rotationX -= deltaY * rotationFactor;
       applyTransform();
       velocityX = deltaX;

@@ -1,0 +1,45 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VVIP Entrance</title>
+    <link rel="stylesheet" href="css/vvip.css" />
+  </head>
+  <body class="vvip-login-body">
+    <div class="login-container">
+      <h1>VVIP ACCESS</h1>
+      <p>A special place for a special person.</p>
+      <form id="passcode-form">
+        <input
+          type="password"
+          id="passcode"
+          placeholder="Enter Secret Passcode"
+          required
+          autocomplete="off"
+        />
+        <button type="submit">Enter</button>
+      </form>
+      <p id="error-message" class="error"></p>
+    </div>
+
+    <script>
+      document
+        .getElementById("passcode-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const passcode = document.getElementById("passcode").value;
+          const errorMessage = document.getElementById("error-message");
+
+          // The secret passcode
+          if (passcode === "lucas0622") {
+            // On success, redirect to the VVIP room
+            window.location.href = "vvip.html";
+          } else {
+            // On failure, show an error message
+            errorMessage.textContent = "ACCESS DENIED. INCORRECT PASSCODE.";
+            document.getElementById("passcode").value = ""; // Clear the input
+          }
+        });
+    </script>
+  </body>
+</html>
