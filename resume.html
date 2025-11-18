@@ -2,291 +2,155 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resume - Kliment Ho</title>
+    <title>Atelier | Kliment Ho</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&family=Courier+New&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <style>
+        /* Resume specific overrides for document style */
+        .resume-paper {
+            background: #fff;
+            max-width: 900px;
+            margin: 140px auto 100px;
+            padding: 80px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+        .resume-header { text-align: center; margin-bottom: 60px; border-bottom: 1px solid #eee; padding-bottom: 40px; }
+        .resume-section { margin-bottom: 50px; }
+        .resume-section h2 { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 3px; font-family: 'Jost', sans-serif; margin-bottom: 30px; }
+        .resume-item { margin-bottom: 30px; }
+        .resume-item h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 5px; }
+        .resume-sub { font-family: 'Courier New', monospace; font-size: 0.85rem; color: #888; margin-bottom: 15px; display: flex; justify-content: space-between; }
+        .resume-list li { margin-bottom: 8px; padding-left: 20px; position: relative; font-size: 0.95rem; }
+        .resume-list li::before { content: "•"; position: absolute; left: 0; color: #ab936b; }
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 768px) { .resume-paper { padding: 30px; margin-top: 100px; } .resume-sub { flex-direction: column; gap: 5px; } .skills-grid { grid-template-columns: 1fr; } }
+    </style>
   </head>
 
-  <body class="resume-page">
-    <!-- Added class="resume-page" -->
-    <!-- resume-container-wrapper is removed as body now handles overall flex structure and padding -->
+  <body>
     <header class="site-header">
       <div class="container">
-        <a href="index.html" class="logo">Kliment Ho</a>
+        <a href="index.html" class="logo">Kliment.</a>
         <nav class="main-nav">
           <ul>
-            <li><a href="index.html#hero">Home</a></li>
-            <li>
-              <a href="index.html#featured-curated-projects">Collection</a>
-            </li>
+            <li><a href="index.html#hero">Cover</a></li>
+            <li><a href="index.html#featured-curated-projects">Collection</a></li>
             <li><a href="resume.html" class="active">Atelier</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <main class="resume-page-main">
+    <main>
       <div class="container">
-        <div class="resume-content">
-          <h1 class="page-title">Kliment Ho</h1>
-          <!-- Name will be populated by JS -->
-          <div class="resume-contact-info">
-            <p>
-              <a href="tel:669-265-7796">669-265-7796</a> |
-              <!-- Phone will be populated by JS -->
-              <a href="mailto:klh005@ucsd.edu">klh005@ucsd.edu</a> |
-              <!-- Email will be populated by JS -->
-              <a href="https://linkedin.com/in/klh005" target="_blank"
-                >linkedin.com/in/klh005</a
-              >
-              |
-              <a href="https://github.com/DevKlim" target="_blank"
-                >github.com/DevKlim</a
-              >
+        <div class="resume-paper">
+          <div class="resume-header">
+            <h1 style="font-size: 4rem; margin-bottom: 10px;">Kliment Ho</h1>
+            <p style="font-family: 'Courier New'; font-size: 0.9rem;">
+                <a href="mailto:klh005@ucsd.edu">klh005@ucsd.edu</a> &nbsp;|&nbsp; 
+                <a href="tel:669-265-7796">669-265-7796</a>
             </p>
+            <div style="margin-top: 30px;">
+                <a href="assets/resume/Kliment_Ho_Resume.pdf" download class="cta-button">Download CV</a>
+            </div>
           </div>
 
-          <div class="download-resume-container">
-            <a
-              href="assets/resume/Kliment_Ho_Resume.pdf"
-              download="Kliment_Ho_Resume.pdf"
-              class="download-resume cta-button secondary"
-            >
-              <!-- Added cta-button and secondary class for styling -->
-              <i class="fas fa-file-pdf"></i> Download PDF Version
-            </a>
-          </div>
-
-          <section class="resume-section" id="education">
+          <section class="resume-section">
             <h2>Education</h2>
             <div class="resume-item">
-              <h3>Bachelor of Science in Data Science</h3>
-              <p class="sub-heading">
-                University of California San Diego, La Jolla, CA
-              </p>
-              <div class="date-location">
-                <span class="date">Expected June 2026</span>
-                <span class="gpa">GPA: 3.5</span>
+              <h3>University of California San Diego</h3>
+              <div class="resume-sub">
+                <span>B.S. Data Science</span>
+                <span>Expected June 2026 | GPA: 3.5</span>
               </div>
             </div>
           </section>
 
-          <section class="resume-section" id="experience">
-            <h2>Experience</h2>
+          <section class="resume-section">
+            <h2>Professional Experience</h2>
+            
             <div class="resume-item">
-              <h3>AI Engineer & Student Researcher</h3>
-              <p class="sub-heading">
-                San Diego Supercomputer Center, La Jolla, CA
-              </p>
-              <div class="date-location">
-                <span class="date">March 2024 – Present</span>
-                <span class="location">La Jolla, CA</span>
+              <h3>San Diego Supercomputer Center</h3>
+              <div class="resume-sub">
+                <span>AI Engineer & Student Researcher</span>
+                <span>March 2024 – Present</span>
               </div>
-              <ul>
-                <li>
-                  Developed an EIDO-based <strong>agentic AI</strong> using
-                  <strong>LLMs (Gemini, OpenRouter)</strong> to process
-                  standardized emergency reports (NENA EIDO JSON) and
-                  unstructured text alerts with Streamlit (dashboard) and
-                  <strong>FastAPI</strong>.
-                </li>
-                <li>
-                  Engineered core Python agent leveraging
-                  <strong>LangChain</strong> for data extraction (key fields),
-                  geocoding (Nominatim), incident correlation, and generating
-                  LLM-driven summaries/actions.
-                </li>
-                <li>
-                  Implemented <strong>OpenCV</strong> and
-                  <strong>Tesseract OCR</strong> pipelines to parse map images,
-                  extracting street names/landmarks for automated geocoding,
-                  enriching incident location data.
-                </li>
+              <ul class="resume-list">
+                <li>Developed EIDO-based agentic AI using LLMs (Gemini) for emergency report processing.</li>
+                <li>Engineered Python agents via LangChain for data extraction and geocoding.</li>
+                <li>Implemented OpenCV/Tesseract pipelines for map parsing and location enrichment.</li>
               </ul>
+            </div>
+
+            <div class="resume-item">
+              <h3>MESDAT Lab (UCSD)</h3>
+              <div class="resume-sub">
+                <span>Machine Learning Research Intern</span>
+                <span>Dec 2023 – Present</span>
+              </div>
+              <ul class="resume-list">
+                <li>Automated data pipeline processing 600+ fitness videos into MotionBert skeletons.</li>
+                <li>Optimized ML setup time (4hrs to 45min) via Docker containerization.</li>
+                <li>Utilized PostgreSQL and OpenAI APIs for automated metadata generation.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="resume-section">
+            <h2>Selected Works</h2>
+            <div class="resume-item">
+                <h3>Cognify</h3>
+                <div class="resume-sub"><span>Data Visualization / Web Audio API</span></div>
+                <ul class="resume-list"><li>Award-winning app visualizing cognitive load via D3.js and sonification.</li></ul>
             </div>
             <div class="resume-item">
-              <h3>Machine Learning Research Intern</h3>
-              <p class="sub-heading">
-                UC San Diego Mobile Systems Design Lab (MESDAT), La Jolla, CA
-              </p>
-              <div class="date-location">
-                <span class="date">Dec 2023 – Present</span>
-                <span class="location">La Jolla, CA</span>
-              </div>
-              <ul>
-                <li>
-                  Engineered an automated data pipeline (<strong
-                    >Python, Docker, PostgreSQL</strong
-                  >) processing 600+ fitness videos into MotionBert skeletons
-                  for an NSF-funded virtual PT system (93% conversion rate).
-                </li>
-                <li>
-                  Improved motion assessment accuracy by 22% via targeted data
-                  pruning (video clips) on 5,600+ skeletal datasets.
-                </li>
-                <li>
-                  Cut ML setup time (4hrs to 45min) by containerizing VQ-VAE
-                  model training workflows using <strong>Docker</strong>.
-                </li>
-                <li>
-                  Reduced video preprocessing time by 40% using a
-                  <strong>PostgreSQL</strong> UUID system and integrating
-                  <strong>OpenAI/Gemini APIs</strong> for auto-labeling and
-                  metadata generation.
-                </li>
-              </ul>
+                <h3>S&P 500 Trend Predictor</h3>
+                <div class="resume-sub"><span>NLP / PyTorch / Transformers</span></div>
+                <ul class="resume-list"><li>BERT-based sentiment analysis model achieving 61.5% directional accuracy.</li></ul>
             </div>
           </section>
 
-          <section class="resume-section" id="projects-resume">
-            <h2>Projects</h2>
-            <div class="resume-item project-style-item">
-              <h3>Cognify: Cognitive Load Sonification & Visualization</h3>
-              <p class="tech-stack">
-                <em>JavaScript, D3.js, Web Audio API, HTML/CSS</em>
-              </p>
-              <ul>
-                <li>
-                  Co-developed award-winning web app visualizing stress data via
-                  synchronized charts (<strong>D3.js</strong>) and
-                  <strong>data sonification</strong>.
-                </li>
-                <li>
-                  Implemented CSV/Apple Health data parsing for multi-sensory
-                  exploration.
-                  <a
-                    href="https://devklim.github.io/cognitive-waveform/"
-                    target="_blank"
-                    >Live Demo</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div class="resume-item project-style-item">
-              <h3>S&P 500 Trend Predictor using News Sentiment</h3>
-              <p class="tech-stack">
-                <em>Python, PyTorch, Transformers (HuggingFace), NLP</em>
-              </p>
-              <ul>
-                <li>
-                  Trained <strong>Transformer models</strong> (BERT variants) on
-                  3 news sources (2018-2020) to predict S&P 500 direction using
-                  sentiment analysis, achieving
-                  <strong>61.5% test accuracy</strong>.
-                </li>
-                <li>
-                  Developed and backtested a quantitative trading strategy based
-                  on model predictions, yielding +10% simulated profit versus
-                  buy-and-hold baseline over 6 months.
-                </li>
-              </ul>
-            </div>
-            <div class="resume-item project-style-item">
-              <h3>DataMaid: Interactive Data Analysis GUI</h3>
-              <p class="tech-stack">
-                <em>Python, Pandas, Polars, SQL (DuckDB), FastAPI, React</em>
-              </p>
-              <ul>
-                <li>
-                  Developed a web GUI for interactive data analysis supporting
-                  multiple backends (<strong
-                    >Pandas, Polars, SQL via DuckDB</strong
-                  >), multi-dataset joins, and automatic
-                  <strong>Python/SQL</strong> code generation.
-                </li>
-              </ul>
-            </div>
-            <div class="resume-item project-style-item">
-              <h3>MMO Private Server Development</h3>
-              <p class="tech-stack">
-                <em
-                  >Ruby, PostgreSQL, Linux, Backend Development, Networking</em
-                >
-              </p>
-              <ul>
-                <li>
-                  Developing and maintaining a game server backend using
-                  <strong>Ruby</strong> (state / data management) and
-                  <strong>PostgreSQL</strong> (data persistence for user
-                  accounts, items, game world state).
-                </li>
-              </ul>
-            </div>
-          </section>
-
-          <section class="resume-section" id="technical-skills">
+          <section class="resume-section">
             <h2>Technical Skills</h2>
-            <ul class="skills-list">
-              <li>
-                <strong>Languages:</strong> Python, SQL (PostgreSQL), Ruby,
-                JavaScript, C++
-              </li>
-              <li>
-                <strong>AI/ML/LLM:</strong> PyTorch, LLMs (OpenRouter,
-                OpenWebUI), LangChain, MCP Claude, Prompt Engineering, NLP
-                (Transformers, HuggingFace), Computer Vision (OpenCV,
-                AlphaPose), Pandas, Polars, Scikit-learn
-              </li>
-              <li>
-                <strong>Data & Databases:</strong> PostgreSQL, Docker, Data
-                Pipelines, DuckDB, Redis, AWS (SageMaker, EC2, S3), Dask
-              </li>
-              <li>
-                <strong>Web & Tools:</strong> FastAPI, Streamlit, React, D3.js,
-                Git, Linux, Shell Scripting, Web Audio API
-              </li>
-            </ul>
+            <div class="skills-grid">
+                <div>
+                    <h3>Languages</h3>
+                    <p>Python, SQL, Ruby, JavaScript, C++</p>
+                </div>
+                <div>
+                    <h3>AI / ML</h3>
+                    <p>PyTorch, LangChain, HuggingFace, OpenCV, Pandas</p>
+                </div>
+                <div>
+                    <h3>Infrastructure</h3>
+                    <p>Docker, AWS, PostgreSQL, Redis, Linux</p>
+                </div>
+                <div>
+                    <h3>Web</h3>
+                    <p>FastAPI, React, Streamlit, D3.js</p>
+                </div>
+            </div>
           </section>
 
-          <section class="resume-section" id="awards">
-            <h2>Awards</h2>
-            <ul class="awards-list">
-              <li>
-                <strong>People's Choice Award</strong>, UCSD DSC106 Data
-                Visualization Project Showcase (Cognify Project)
-              </li>
-              <li>
-                <strong>Top 8 Best Projects</strong>, UCSD DSC106 Data
-                Visualization Project Showcase (Cognify Project)
-              </li>
-            </ul>
-          </section>
         </div>
       </div>
     </main>
 
     <footer class="site-footer">
-      <div class="container">
-        <p>
-          &copy; <span id="current-year-resume">2024</span> Kliment Ho. All
-          Rights Reserved.
-        </p>
-        <div class="social-links">
-          <a
-            href="https://github.com/DevKlim"
-            target="_blank"
-            aria-label="GitHub"
-            ><i class="fab fa-github"></i
-          ></a>
-          <a
-            href="https://linkedin.com/in/klh005"
-            target="_blank"
-            aria-label="LinkedIn"
-            ><i class="fab fa-linkedin"></i
-          ></a>
+        <div class="container">
+          <p>&copy; 2024 Kliment Ho.</p>
         </div>
-      </div>
     </footer>
-    <!-- No specific scripts needed just for resume page beyond global script.js -->
     <script src="js/script.js"></script>
   </body>
 </html>

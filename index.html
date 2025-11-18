@@ -2,12 +2,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kliment Ho - Portfolio</title>
+    <title>Kliment Ho | AI Engineer & Designer</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&family=Courier+New&display=swap"
       rel="stylesheet"
     />
     <link
@@ -17,6 +17,9 @@
   </head>
 
   <body>
+    <!-- Film Grain Texture -->
+    <div class="grain-overlay"></div>
+
     <!-- Floating 3D Polaroid Element -->
     <div id="floating-polaroid">
       <div class="polaroid-card-inner">
@@ -28,11 +31,12 @@
 
     <header class="site-header">
       <div class="container">
-        <a href="index.html" class="logo">Kliment Ho</a>
+        <a href="index.html" class="logo">Kliment.</a>
         <nav class="main-nav">
           <ul>
-            <li><a href="#hero" class="active">Home</a></li>
+            <li><a href="#hero">Cover</a></li>
             <li><a href="#featured-curated-projects">Collection</a></li>
+            <li><a href="#archive">Archive</a></li>
             <li><a href="#memories">Moments</a></li>
             <li><a href="resume.html">Atelier</a></li>
           </ul>
@@ -41,108 +45,118 @@
     </header>
 
     <main>
+      <!-- Hero / Cover -->
       <section id="hero" class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="hero-content container">
-          <h1>Kliment Ho</h1>
-          <p class="hero-subheading">
-            AI Engineer & Data Scientist | Crafting Intelligent Solutions &
-            Innovative Experiences.
-          </p>
-          <a href="#page-content-start" class="cta-button">Explore The Work</a>
+        <div class="container">
+          <div class="hero-content">
+            <span class="hero-label">Portfolio / 2024-2025</span>
+            <h1>
+              Data Scientist &<br />
+              <span>AI Engineer.</span>
+            </h1>
+            <p class="hero-subheading">
+              Crafting intelligent solutions and innovative experiences through
+              rigorous analysis and creative engineering.
+            </p>
+            <a href="#about" class="cta-button">The Designer</a>
+          </div>
         </div>
       </section>
 
-      <!-- About Me Section -->
+      <div class="section-divider"></div>
+
+      <!-- The Designer (About) -->
       <section id="about" class="about-me-section">
         <div class="container">
-          <div class="about-me-content">
-            <div class="about-me-image">
-              <img
-                src="data/pictures/IMG_1238.jpg"
-                alt="A photo of Kliment Ho"
-              />
+          <div class="about-layout">
+            <div class="about-image-wrapper">
+              <div class="about-me-image">
+                <img
+                  src="data/pictures/IMG_1238.jpg"
+                  alt="Kliment Ho Portrait"
+                />
+              </div>
             </div>
-            <div class="about-me-text">
-              <h2>Kliment is an odd name...</h2>
-              <p>Yeah, and honestly, it is a great fit for someone like me!</p>
+            <div class="about-text">
+              <h2>An Odd Name,<br />A Perfect Fit.</h2>
               <p>
-                If you are not a web-scraping agent, then welcome to my cozy
-                little abode! I love exploring every single dessert shop in Asia
-                and traveling public transportation across the globe! Of course,
-                I also love playing and modding video games time to time...
+                Welcome to my digital abode. I navigate the intersection of
+                multi-agentic systems, AI pipelines, and graphics programming.
               </p>
               <p>
-                Multi-agentic systems, AI pipelines, and graphics programming
-                are three of my favorite research developments! I believe that
-                AGI will shift the operations of all factories, from small candy
-                shops to multi-million dollar chip production industries. You
-                can find me probably constantly trying new food or playing
-                around with my local LLMs using Qwen and HuggingFace models.
+                From parsing data for multi-million dollar chip industries to
+                exploring the finest dessert shops in Asia, my approach blends
+                analytical precision with a hunger for discovery. I believe AGI
+                will shift operations globally, and I position myself at the
+                forefront of that shift.
               </p>
+              <div class="about-meta">
+                <div class="meta-item">
+                  <span class="meta-label">Location</span>
+                  <span class="meta-value">San Diego</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Focus</span>
+                  <span class="meta-value">AI / LLMs</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- New Featured Curated Projects Banner Section -->
+      <!-- Featured Collection (Slider) -->
       <section
         id="featured-curated-projects"
         class="featured-curated-banner-section"
       >
-        <div class="container">
+        <div class="featured-header container">
           <h2>Featured Collection</h2>
-          <!-- Optional Title for the section -->
         </div>
         <div class="featured-curated-rotator">
           <div class="slides-container" id="featured-curated-slides-container">
-            <!-- Slides will be injected here by JS -->
+            <!-- Slides injected via JS -->
           </div>
-          <div class="rotator-dots" id="featured-curated-dots-container">
-            <!-- Dots will be injected here by JS -->
-          </div>
+          <!-- Dots/Nav can be added via JS if needed, but keeping it clean for now -->
         </div>
       </section>
 
-      <div id="page-content-start" class="container page-layout-container">
+      <!-- The Archive (GitHub + Sidebar) -->
+      <div id="archive" class="page-layout-container">
         <div class="main-content-area">
-          <!-- The old "Featured Projects" grid section is removed from here -->
-          <!-- It is replaced by the banner above -->
-
-          <section id="all-github-projects" class="projects-section">
+          <div class="archive-header">
             <h2>The Archive</h2>
-            <div class="projects-grid" id="github-projects-grid">
-              <p class="loading-message">Loading GitHub repositories...</p>
-              <!-- GitHub repo cards will be dynamically inserted here by script.js -->
-            </div>
-          </section>
+            <p>Open Source Contributions</p>
+          </div>
+
+          <div class="projects-grid" id="github-projects-grid">
+            <p class="loading-message">Fetching repository data...</p>
+            <!-- GitHub cards injected here -->
+          </div>
         </div>
 
         <aside class="sidebar-area">
           <div class="featured-rotator-panel">
-            <h2>Recent Activity</h2>
+            <h3>Recent Activity</h3>
+            <div class="section-divider" style="margin-bottom: 20px"></div>
             <div class="rotator-content" id="rotator-content-area">
-              <p class="loading-message">Loading recent projects...</p>
-              <!-- Rotator items will be injected here for GitHub repos -->
+              <p class="loading-message">Syncing...</p>
             </div>
             <div class="rotator-nav">
-              <button id="rotator-prev" aria-label="Previous GitHub Project">
-                &lt;
-              </button>
-              <button id="rotator-next" aria-label="Next GitHub Project">
-                &gt;
-              </button>
+              <button id="rotator-prev" class="cta-button" style="padding: 5px 15px;">&lt;</button>
+              <button id="rotator-next" class="cta-button" style="padding: 5px 15px;">&gt;</button>
             </div>
           </div>
         </aside>
       </div>
 
-      <!-- Memories Section -->
+      <!-- Moments -->
       <section id="memories" class="memories-section">
         <div class="container">
-          <h2>Memories & Moments</h2>
+          <h2>Moments & Memories</h2>
+          <p style="margin-bottom: 60px">A curated visual diary.</p>
           <div class="memories-grid" id="memories-grid">
-            <!-- 3D picture cards will be injected here by JS -->
+            <!-- Polaroids injected here -->
           </div>
         </div>
       </section>
@@ -150,10 +164,6 @@
 
     <footer class="site-footer">
       <div class="container">
-        <p>
-          &copy; <span id="current-year">2024</span> Kliment Ho. All Rights
-          Reserved.
-        </p>
         <div class="social-links">
           <a
             href="https://github.com/DevKlim"
@@ -168,6 +178,9 @@
             ><i class="fab fa-linkedin"></i
           ></a>
         </div>
+        <p style="margin-top: 20px">
+          &copy; <span id="current-year">2024</span> Kliment Ho.
+        </p>
       </div>
     </footer>
 
