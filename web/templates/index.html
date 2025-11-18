@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kliment Ho | Atelier</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&family=Courier+New&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Visual Noise Texture -->
+    <div class="grain-overlay"></div>
+
+    <!-- The Inspector Overlay (Hidden by default) -->
+    <div id="inspector-overlay" class="inspector-overlay">
+        <div class="inspector-controls">
+            <span>Click to Flip</span>
+            <span>Drag to Spin</span>
+            <span class="close-btn" id="inspector-close">Close [ESC]</span>
+        </div>
+        <!-- Card moves here when inspecting -->
+        <div id="inspector-stage"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="logo">Kliment.</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#hero">Cover</a></li>
+                    <li><a href="#collection">Collection</a></li>
+                    <li><a href="#archive">Archive</a></li>
+                    <li><a href="#moments">Moments</a></li>
+                    <li><a href="/resume">Atelier</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-label">Portfolio / 2024-2025</span>
+                    <h1>Data Scientist &<br><span>AI Engineer.</span></h1>
+                    <p class="hero-subheading">
+                        Crafting intelligent solutions and innovative experiences through rigorous analysis and creative engineering.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Collection (Projects) -->
+        <section id="collection" class="section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>The Collection</h2>
+                    <p>Select Works</p>
+                </div>
+                <div class="projects-grid" id="projects-container">
+                    <!-- Injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Moments (3D Interactive Gallery) -->
+        <section id="moments" class="section-padding bg-tertiary">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Moments</h2>
+                    <p>A visual diary. Click to inspect.</p>
+                </div>
+                
+                <!-- The Grid -->
+                <div class="moments-grid" id="moments-grid">
+                    <!-- Injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Archive (GitHub) -->
+        <section id="archive" class="section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>The Archive</h2>
+                    <p>Open Source Contributions</p>
+                </div>
+                <div class="archive-list" id="archive-container">
+                    <p>Accessing GitHub Archive...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/DevKlim" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/klh005" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>&copy; 2024 Kliment Ho.</p>
+        </div>
+    </footer>
+
+    <!-- Compiled TypeScript -->
+    <script src="/js/app.js"></script>
+</body>
+</html>
